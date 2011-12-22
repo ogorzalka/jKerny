@@ -1,66 +1,10 @@
 /*global jQuery */
 /*!
  * jKern.js
- * Version: 0.2
- * Copyright 2011 Joshua Gross
+ * Version: 0.1
+ * Inspired by Joshua Gross (http://kerningjs.com)
+ * Copyright 2011 Olivier Gorzalka
  * MIT license
- *
- * Usage:
- *  Include this file anywhere in your HTML
- *    <script src="kerning.js"></script>
- *
- *  Then, add any of the attributes following to your CSS, under any
- *  selectors you want modified:
- *    -letter-kern, -letter-size, -letter-weight, -letter-color, -letter-transform
- *    -word-kern, -word-size, -word-weight, -word-color, -word-transform
- *
- *  To use pairings (e.g., modify 'a' if 'ab' is paired):
- *    -letter-pairs('xy': [value], …)
- *    -word-pairs('cat mouse': [value], …)
- *
- *  To use multiple transforms, you need to use transform "groups":
- *    -transform-group([transform] [transform] …)
- *
- *  Sometimes you need to want to use a different size or weight, depending on what
- *  font has loaded:
- *    font-size: [default size];
- *    font-size: if-font('font name': [size], 'font name': [size], …);
- *  (The first line is a fallback should jKern.js not load. This is recommended.)
- *
- *  That's it! Attributes will be applied automagically.
- *
- * Examples:
- *  Alter first 3 letters:
- *    -letter-size: 100px 20px 30px;
- *
- *  Modify letter pairs:
- *    -letter-kern: -letter-pairs('ab': 1px,
- *                                'bc': 300px,
- *                                's ': 100px);
- *
- *  Transform the first two letters:
- *    -letter-transform: -transform-group(rotate3d(0,0,1,10deg) translate3d(0,10px,0))
- *                       -transform-group(translate3d(0,-10px,0) rotate3d(0,0,1,-10deg));
- *
- *  Modify word pairs:
- *    -word-size: -word-pairs('this is': 10em);
- *
- *  Modify the first 3 words:
- *    -word-size: 10em 0.1em 0.2em;
- *
- *  Using repeat rules:
- *    -letter-color: -letter-repeat(even: #f0f0f0, odd: #cccccc);
- *    -letter-color: -letter-repeat(2n+1: #f0f0f0);
- *
- *  Using shorthand properties: (don't forget brackets for each letter or each word)
- *    -word-text-shadow: (1px 1px 0px rgba(0,0,0,0.5), 2px 2px 0px rgba(0,0,0,0.5)) _ (rgba(150,150,150,0.5) 1px 1px 0px, 2px 2px 0px yellow);
- *
- *  Using conditionals:
- *    -letter-kern: if-font('Helvetica Neue': 0 1px 1px, 'Helvetica': 0 -1px 0);
- *
- *  Using conditionals on existing properties for weight or size:
- *    font-size: 9.5em;
- *    font-size: if-font('Helvetica Neue': 10em, 'Helvetica': 9em);
  */
 (function($){
     /*!
