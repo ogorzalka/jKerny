@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Kern.js</title>
+	<meta name="description" content="Kern.js">
+	<meta name="author" content="Olivier Gorzalka">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<!-- Theme CSS files (menu swaps these out) -->
+	<link rel="stylesheet" id="style-theme-link" href="css/global.css">
+</head>
+
+<body class="deck-container">
+<header>
+	<h1>jKern kerning get easy</h1>
+	<p>Powered by the power of Lettering.js and inspiration drawn on Kerningjs.com, jKern gives you the ability to use brand new pseudo-selectors (well ok... they aren't W3C !)</p>
+	<a href="https://github.com/clearideaz/jKern" title="Download my jKern on github">Download jKern</a>
+</header>
+<section>
+	<h2>Let's take some examples</h2>
+
+	<h3>:first-word &amp; :word:first-child</h3>
+	You want to style the first word, no problem !
+	<pre>p:word:first-child { color:red; }</pre>
+	or 
+	<pre>p:first-word { color:red; }</pre>
+	produce
+	<div class="pre example1">
+		<p>Johnny take a walk with your sister the moon</p>
+	</div>
+
+	<h3>:last-word &amp; :word:last-child</h3>
+	Ok now the last word, no problem !
+	<pre>p:word:last-child { font-weight:bold; background-color:red; color:#fff; }</pre>
+	or 
+	<pre>p:last-word { font-weight:bold; background-color:red; color:#fff; }</pre>
+	produce
+	<div class="pre example2">
+		<p>Johnny take a walk with your sister the moon</p>
+	</div>
+
+	<h2>Guess what, it works also on letter !</h2>
+
+	<h3>:first-letter &amp; :letter:first-child</h3>
+	OK :first-letter is already a W3C specification but what about a cross-browser solution ?
+	<pre>p:word:first-letter { font-size:2em; font-weight:bold; position:relative; top:0.2em; }</pre>
+	or 
+	<pre>p:first-letter { 	font-size:2em; font-weight:bold; position:relative; top:0.2em; }</pre>
+	produce
+	<div class="pre example3">
+		<p>Johnny take a walk with your sister the moon</p>
+	</div>
+
+	<h3>:last-letter &amp; :letter:last-child</h3>
+	You want to target the last letter and there's reason to stop you !
+	<pre>p:word:last-letter { .example4 p:last-letter { background:lime; color:#fff; border-radius:5px; }</pre>
+	or 
+	<pre>p:last-letter { .example4 p:last-letter { background:lime; color:#fff; border-radius:5px; }</pre>
+	produce
+	<div class="pre example4">
+		<p>Johnny take a walk with your sister the moon</p>
+	</div>
+
+	<h2>What else ?</h2>
+
+	There is no limit with pseudo-selector, you can combining :word or :letter with all the other existing pseudo-selectors. Need some ideas ?
+
+	<pre>
+h3:word:first-of-type
+strong:letter:nth-child(2n)
+p:first-child:word:last-of-type(2n)</pre>
+</section>
+<footer>
+	jKern is a funny creation by <a href="http://clearideaz.com" title="Clearideaz, webdesigner et développeur frontend sur Lille, France">Olivier Gorzalka</a>
+</footer>
+
+
+
+ <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.min.js"><\/script>')</script>
+<script src="js/jkern.js"></script>
+</body>
+</html>
