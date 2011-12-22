@@ -46,7 +46,7 @@ a:hover {
 	color:#000;
 }
 
-header a {
+a.download {
 	background-color:#b91f1f;
 	border:1px solid #b91f1f;
 	color:#fff;
