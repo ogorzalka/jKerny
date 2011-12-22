@@ -59,12 +59,6 @@ a.download {
 	text-shadow:1px 1px 0 rgba(0,0,0,0.3);
 }
 
-a:first-of-type:hover {
-	border-color:#b91f1f;
-	background-color:#dea5a5;
-	color:#b91f1f;
-}
-
 h2:first:last-word {
 	color:#b91f1f;
 }
