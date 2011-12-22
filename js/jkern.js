@@ -315,7 +315,7 @@
                 if (match = selector.match(new RegExp('(.*):((first|last)-)?(letter|word)(:nth-(child|last-child|of-type|last-of-type)\(.*\)|:last-of-type|:first-of-type|:first-child|:last-child)?'), 'ig')) {
                     var $elements = $(match[1]),
                         type = (match[4] == 'letter') ? 'char' : 'word',
-                        exprFilter = (typeof match[3] != 'undefined') ? ':'+match[3] : match[5];
+                        exprFilter = (typeof match[3] != 'undefined' && match[3] != '') ? ':'+match[3] : match[5];
                     $elements
                         .not('.kerningjs')
                         .addClass('kerningjs').css('visibility', 'inherit')

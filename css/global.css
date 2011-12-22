@@ -64,7 +64,7 @@ a.download {
 	text-shadow:1px 1px 0 rgba(0,0,0,0.3);
 }
 
-h2:first:last-word {
+h2:last-word {
 	color:#b91f1f;
 }
 
@@ -73,11 +73,20 @@ h2 {
 	margin-top:2em;
 }
 
+h2, h3 {
+	text-align:center;
+}
+
+section {
+	padding:0 20%;
+	text-align:left;
+}
+
 .pre, pre {
 	background:#ebebeb;
 	border:2px solid #ccc;
-	padding:5px;
-	margin:5px 20%;
+	padding:5px 35px;
+	margin:5px 0;
 	vertical-align:middle;
 	overflow:auto;
 }
