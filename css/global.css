@@ -46,6 +46,11 @@ a:hover {
 	color:#000;
 }
 
+h1 + div {
+	float:right !important;
+	margin-top:-115em !important;
+}
+
 a.download {
 	background-color:#b91f1f;
 	border:1px solid #b91f1f;
