@@ -26,7 +26,7 @@ h1:first-word {
 }
 
 h1:word:nth-child(2) {
-	margin-left:87px;
+	margin-left:32px;
 }
 p {
 	float:left;
@@ -36,6 +36,9 @@ p {
 
 h1:first-letter {
 	-moz-transform:rotate(-10deg) translate(0, 10px);
+	-o-transform:rotate(-10deg) translate(0, 10px);
+	-o-transform:rotate(-10deg) translate(0, 10px);
+	transform:rotate(-10deg) translate(0, 10px);
 }
 
 a {
