@@ -81,7 +81,7 @@
       /span\[class\^=(word|char)\]/
     ], // only include selectors that match one these patterns
     
-    disableCaching: false, // turn this on to disable caching
+    disableCaching: true, // turn this on to disable caching
     
     checkMediaTypes: true, // set this to false if you want to always run all media types regardless of context.
     
@@ -175,13 +175,37 @@
 
     proceedLettering: function(selectors) {
       $.each(selectors, function(){
-        var $elements = $(this.selector.split(/ span\[class\^=(char|word)\]/g)[0]);
+      	
+      	var $elements = $(this.selector.replace(':hover', '').split(/ span\[class\^=(char|word)\]/g)[0]),
+      		eventSelector = false;
+      		
         $elements
-            .not('.kerningjs')
-            .addClass('kerningjs').css('visibility', 'inherit')
+            .not('.jkerny')
+            .addClass('jkerny').css('visibility', 'inherit')
             .lettering('words').children('span').css('display', 'inline-block') // break down into words
             .lettering().children('span').css('display', 'inline-block'); // break down into letters
-        $(this.selector).css(this.attributes);
+            
+		if (this.selector.indexOf(':hover') > -1) {
+			var originalSelector = this,
+				eventSelector = true,
+				$hoverElements = $(originalSelector.selector.split(':hover')[0]),
+				$styledElements = $(originalSelector.selector.replace(':hover', ''));
+		}
+
+        if (eventSelector === true) {
+        	$hoverElements.on('mouseenter', function() {
+        		$styledElements.data({
+        			'default-style' : $styledElements.attr('style')
+        		});
+        		$styledElements.css(originalSelector.attributes);
+        	});
+			$hoverElements.on('mouseleave', function() {
+				$styledElements.attr('style', $styledElements.data('default-style'));
+			});
+        	
+        } else {
+        	$(this.selector).css(this.attributes);
+        }
       });
     },
     

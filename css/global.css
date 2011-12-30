@@ -100,10 +100,14 @@ footer {
 	padding:1em 0;
 }
 
+
 .example1 p:word:first-child {
 	color:red;
 }
 
+.example1 p:word:first-child:hover {
+	color:yellow;
+}
 .example2 p:word:last-child {
 	font-weight:bold;
 	background-color:red; 
