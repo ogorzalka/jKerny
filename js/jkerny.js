@@ -196,8 +196,8 @@
         	$hoverElements.on('mouseenter', function() {
         		$styledElements.data({
         			'default-style' : $styledElements.attr('style')
-        		});
-        		$styledElements.css(originalSelector.attributes);
+        		})
+        		.css(originalSelector.attributes);
         	});
 			$hoverElements.on('mouseleave', function() {
 				$styledElements.attr('style', $styledElements.data('default-style'));
