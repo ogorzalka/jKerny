@@ -81,7 +81,7 @@
         // only include selectors that match one these patterns
         only_properties: [/-jkerny-(word|letter)-spacing/],
         // only include selectors that match one these patterns
-        disableCaching: true,
+        disableCaching: false,
         // turn this on to disable caching
         checkMediaTypes: true,
         // set this to false if you want to always run all media types regardless of context.
