@@ -179,8 +179,7 @@
         applyCss: function (selector, attributes, eventSelector) {
             if (eventSelector === true) {
                 var splitSelector = selector.split(':hover'),
-                    $hoverElements = $(splitSelector[0]),
-                    $styledElements = $(selector.replace(':hover', ''));
+                    $hoverElements = $(splitSelector[0]);
                 $hoverElements.on('mouseenter', function () {
                     $styledElements = $.trim(splitSelector[1]) != '' ? $(this).find($.trim(splitSelector[1])) : $(this);
                     $styledElements.data({
