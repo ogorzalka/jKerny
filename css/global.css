@@ -137,3 +137,30 @@ footer {
 	font-size: 1.5em;
 	-jkerny-word-spacing: -2px -2px -2px -2px;
 }
+
+.example7 p {
+	font-size: 2em;
+	color: #F4F1DE;
+	text-transform:uppercase;
+}
+
+.example7 p:letter {
+	width: 1em;
+	text-align: center;
+}
+
+.example7 p:letter:nth-child(odd) {
+	-webkit-transform: skewY(-15deg);
+	-moz-transform: skewY(-15deg);
+	-o-transform: skewY(-15deg);
+	transform: skewY(-15deg);
+	background-color: #E24B3B;
+}
+
+.example7 p:letter:nth-child(even) {
+	-webkit-transform: skewY(15deg);
+	-moz-transform: skewY(15deg);
+	-o-transform: skewY(15deg);
+	transform: skewY(15deg);
+	background-color: #A93629;
+}

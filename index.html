@@ -6,7 +6,7 @@
 	<title>jKerny.js, jQuery plugin to make kerning easy</title>
 	<meta name="description" content="jKerny.js, kerning get easy">
 	<meta name="author" content="Olivier Gorzalka">
-	<meta name="viewport" content="width=1024, user-scalable=yes">
+	<meta name="viewport" content="user-scalable=yes">
 	<link rel="stylesheet" href="css/global.css">
 </head>
 <body class="deck-container">
@@ -20,13 +20,35 @@
 	<h2>Installation&nbsp;?</h2>
 	Just include <a href="http://jquery.com" title="jQuery motherfucker">the latest jquery library</a> and the jKerny plugin and you are right!
 
-	<h2>Let's take some examples</h2>
+	<h2>What about Kerning ?</h2>
+	
+	<h3>-jkerny-letter-spacing</h3>
+	
+	If you want to adjust the space between letter, jKerny let you use a simple property "-jkerny-letter-spacing", let's see!
+	
+	<pre>p { font-size: 1.5em; -jkerny-letter-spacing: 2px -2px -1px -1px 2px; }</pre>
+	results
+	<div class="pre example5">
+		<p>Ah Men!</p>
+	</div>
+
+	<h3>-jkerny-word-spacing</h3>
+	
+	Hey, you can also adjust word-spacing with the "-jkerny-word-spacing" property!
+	
+	<pre>p { font-size: 1.5em; -jkerny-word-spacing: -2px -2px -2px -2px; }</pre>
+	results
+	<div class="pre example6">
+		<p>The word is mine!</p>
+	</div>
+	
+	<h2>And now, let me introduce you the pseudo-selectors of the future!</h2>
 	<h3>:first-word &amp; :word:first-child</h3>
 	You want to style the first word and apply a hover effect, no problem!
 	<pre>p:word:first-child { color:red; }</pre>
 	or 
 	<pre>p:first-word { color:red; } p:first-word:hover { color:yellow; }</pre>
-	produce
+	results
 	<div class="pre example1">
 		<p>Johnny take a walk with your sister the moon</p>
 	</div>
@@ -36,7 +58,7 @@
 	<pre>p:word:last-child { font-weight:bold; background-color:red; color:#fff; }</pre>
 	or 
 	<pre>p:last-word { font-weight:bold; background-color:red; color:#fff; }</pre>
-	produce
+	results
 	<div class="pre example2">
 		<p>Johnny take a walk with your sister the moon</p>
 	</div>
@@ -48,7 +70,7 @@
 	<pre>p:word:first-letter { font-size:2em; font-weight:bold; position:relative; top:0.2em; }</pre>
 	or 
 	<pre>p:first-letter { 	font-size:2em; font-weight:bold; position:relative; top:0.2em; }</pre>
-	produce
+	results
 	<div class="pre example3">
 		<p>Johnny take a walk with your sister the moon</p>
 	</div>
@@ -58,40 +80,40 @@
 	<pre>p:word:last-letter { .example4 p:last-letter { background:lime; color:#fff; border-radius:5px; }</pre>
 	or 
 	<pre>p:last-letter { .example4 p:last-letter { background:lime; color:#fff; border-radius:5px; }</pre>
-	produce
+	results
 	<div class="pre example4">
 		<p>Johnny take a walk with your sister the moon</p>
-	</div>
-	
-	<h2>And what about Kerning ?</h2>
-	
-	<h3>-jkerny-letter-spacing</h3>
-	
-	If you want to adjust the space between letter, jKerny let you use a simple property "-jkerny-letter-spacing", let's see!
-	
-	<pre>p { font-size: 1.5em; -jkerny-letter-spacing: 2px -2px -1px -1px 2px; }</pre>
-	produce
-	<div class="pre example5">
-		<p>Ah Men!</p>
-	</div>
-
-	<h3>-jkerny-word-spacing</h3>
-	
-	Hey, you can also adjust word-spacing with the "-jkerny-word-spacing" property!
-	
-	<pre>p { font-size: 1.5em; -jkerny-word-spacing: -2px -2px -2px -2px; }</pre>
-	produce
-	<div class="pre example6">
-		<p>The word is mine!</p>
 	</div>
 
 	<h2>What else?</h2>
 
 	There is no limit with pseudo-selector, you can combining :word or :letter with all the other existing pseudo-selectors.<br />Need some ideas&nbsp;?
 	<pre>
-h3:word:first-of-type
-strong:letter:nth-child(2n)
-p:first-child:word:last-of-type(2n)</pre>
+p {
+	font-size: 2em;
+	color: #F4F1DE;
+	text-transform:uppercase;
+}
+
+p:letter {
+	width: 1em;
+	text-align: center;
+}
+
+p:letter:nth-child(odd) {
+	transform: skewY(-15deg);
+	background-color: #E24B3B;
+}
+
+p:letter:nth-child(even) {
+	transform: skewY(15deg);
+	background-color: #A93629;
+}
+	</pre>
+	and here's the result!
+	<div class="pre example7">
+		<p>Kerning</p>
+	</div>
 </section>
 <footer>
 	jKerny is a funny creation by <a href="http://clearideaz.com" title="Clearideaz, webdesigner et développeur frontend sur Lille, France">Olivier Gorzalka</a>
