@@ -25,9 +25,10 @@ h1:first-word {
 	margin-bottom:-20px;
 }
 
-h1:word:nth-child(2) {
-	margin-left:32px;
+h1 {
+	-jkerny-word-spacing: 32px;
 }
+
 p {
 	float:left;
 	width:70%;
@@ -125,4 +126,14 @@ footer {
 	background:lime;
 	color:#fff;
 	border-radius:5px;
+}
+
+.example5 p {
+	font-size: 1.5em;
+	-jkerny-letter-spacing: 2px -2px -1px -1px 2px;
+}
+
+.example6 p {
+	font-size: 1.5em;
+	-jkerny-word-spacing: -2px -2px -2px -2px;
 }
