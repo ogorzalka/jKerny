@@ -70,16 +70,20 @@
         // set to false to only analyse in document styles and avoid ajax requests. 
         exclude: [],
         lettering_replace: {
-            ':letter': 'span[class^=char]',
-            ':word': 'span[class^=word]',
-            ':first-word': 'span[class^=word]:first',
-            ':last-word': 'span[class^=word]:last',
-            ':first-letter': 'span[class^=char]:first',
-            ':last-letter': 'span[class^=char]:last'
+            ':letter': 'span.letter',
+            ':word': 'span.word',
+            ':first-word': 'span.word:first-child',
+            ':last-word': 'span.word:last-child',
+            ':first-letter': 'span.word:first-child span.letter:first-child',
+            ':last-letter': 'span.word:last-child span.letter:last-child'
         },
-        only_selectors: [/span\[class\^=(word|char)\]/],
+        only_selectors: [/span\.(word|letter)/],
         // only include selectors that match one these patterns
         only_properties: [/-jkerny-(word|letter)-spacing/],
+        
+        // pseudo selectors
+        pseudo_selectors : /:(hover|active|focus|visited)/,
+        
         // only include selectors that match one these patterns
         disableCaching: false,
         // turn this on to disable caching
@@ -99,7 +103,7 @@
             var selectors = [];
             var jkerny = this;
 
-            $('style,link[rel=stylesheet]').each(function () {
+            $('style:not([rel=jkerny]),link[rel=stylesheet]').each(function () {
                 if (jkerny.checkMediaTypes) { // media type support enabled
                     if (!jkerny.mediumApplies(this.media)) return; // medium doesn't run in this context so ignore it entirely.
                 }
@@ -118,7 +122,10 @@
                 selectors.concat(this.parse(content)); // parse any passed in styles
             }
             selectors = this.filterSelectors(selectors);
-            this.runSelectors(selectors);
+        },
+        
+        ignoreMediaQueries: function(content) {
+        	return content.replace(new RegExp("@media[^\{]+\{([^\{\}]+\{[^\}\{]+\})+", 'gi'), '');
         },
 
         convertPseudoSelectors: function (content) {
@@ -135,6 +142,7 @@
                 url: href,
                 success: function (data) {
                     content = jkerny.convertPseudoSelectors(data);
+                    content = jkerny.ignoreMediaQueries(content);
                     jkerny.refreshLoadQueue(href, content);
                 }
             });
@@ -172,12 +180,20 @@
         runStylesFromText: function (data) {
             var jkerny = this,
                 selectors = this.filterSelectors(this.parse(data));
-            this.runSelectors(selectors);
             jkerny.proceedLettering(selectors);
         },
-
-        applyCss: function (selector, attributes, eventSelector) {
-            if (eventSelector === true) {
+		
+		rawCss: function(selector, attributes) {
+			var cssStyle = selector + ' { ';
+			for (attribute in attributes) {
+				cssStyle += attribute+':'+attributes[attribute]+'; ';
+			}
+			cssStyle += '} ';
+			return cssStyle;
+		},
+		
+        applyCss: function (selector, attributes) {
+            if (selector.indexOf(':hover') > -1) {
                 var splitSelector = selector.split(':hover'),
                     $hoverElements = $(splitSelector[0]);
                 $hoverElements.on('mouseenter', function () {
@@ -191,63 +207,55 @@
                     $styledElements.attr('style', $styledElements.data('default-style'));
                 });
             } else {
-                $(selector).css(attributes);
+            	$(selector).css(attributes);
             }
         },
 
         proceedLettering: function (selectors) {
-            var jkerny = this;
+            var jkerny = this,
+            	cssStyle = '';
+            
             $.each(selectors, function () {
                 var s = this,
-                    $elements = $(s.selector.replace(':hover', '').split(/ span\[class\^=(char|word)\]/g)[0]),
-                    eventSelector = false;
-
-                $elements.not('.jkerny').addClass('jkerny').css('visibility', 'inherit').lettering('words').children('span').css('display', 'inline-block') // break down into words
-                .lettering().children('span').css('display', 'inline-block'); // break down into letters
-                if (s.selector.indexOf(':hover') > -1) {
-                    eventSelector = true;
-                }
+                    $elements = $(s.selector.replace(this.pseudo_selectors, '').split(/ span.(letter|word)/g)[0]);
+                $elements
+                	.not('.jkerny')
+                		.addClass('jkerny')
+                		.css('visibility', 'inherit')
+                		.lettering('words')
+                			.children('span')
+                				.css('display', 'inline-block') // break down into words
+                				.addClass('word')
+                		.lettering()
+                			.children('span')
+                				.css('display', 'inline-block') // break down into letters
+                				.addClass('letter');
 
                 if (typeof s.attributes['-jkerny-letter-spacing'] != 'undefined') {
                     var letterSpacingValues = s.attributes['-jkerny-letter-spacing'].replace(/[\n\s]+/g, ' ').split(' ');
                     for (var i = 0; i <= letterSpacingValues.length; i++) {
-                        jkerny.applyCss(s.selector + ' span[class^=word] span:eq(' + i + ')', {
+                        jkerny.applyCss(s.selector + ' span.word span:eq(' + i + ')', {
                             marginRight: letterSpacingValues[i]
-                        }, eventSelector);
+                        });
                     }
                 }
 
                 if (typeof s.attributes['-jkerny-word-spacing'] != 'undefined') {
                     var letterSpacingValues = s.attributes['-jkerny-word-spacing'].replace(/[\n\s]+/g, ' ').split(' ');
                     for (var i = 1; i <= letterSpacingValues.length; i++) {
-                        $elements.find('span.word' + i).css({
+                        jkerny.applyCss(s.selector + ' span.word' + i, {
                             marginRight: letterSpacingValues[(i - 1)]
                         });
                     }
                 }
-
+                
                 $.each(jkerny.only_selectors, function () {
                     if (s.selector.match(this)) {
-                        jkerny.applyCss(s.selector, s.attributes, eventSelector);
+                        cssStyle += jkerny.rawCss(s.selector, s.attributes);
                     }
                 });
             });
-        },
-
-        runSelectors: function (selectors) {
-            var jkerny = this,
-                result = null;
-            $.each(selectors, function () { // load each of the matched selectors
-                if (jkerny.isUnderstoodSelector(this.selector)) return; // skip runing the selector if the browser already understands it.
-                if (jkerny.disableCaching) return $(this.selector).css(this.attributes); // cache is turned off so just run styles
-                if (jkerny.cache[this.selector]) { // check the cache
-                    jkerny.cache[this.selector].css(this.attributes); // direct cache hit
-                } else if (result = jkerny.scanCache(this.selector)) {
-                    result[0].find(result[1]).css(this.attributes); // partial cache hit
-                } else {
-                    jkerny.cache[this.selector] = $(this.selector).css(this.attributes); // cache miss
-                };
-            });
+            $('<style rel="jkerny">'+cssStyle+'</style>').appendTo('body');
         },
 
         scanCache: function (selector) {
@@ -259,6 +267,7 @@
         filterSelectors: function (selectors) {
             if (!selectors.length) return [];
             var s = selectors;
+            
             if ((this.only_selectors && this.only_selectors.length) || (this.only_properties && this.only_properties.length)) { // filter selectors to remove those that don't match the only include rules
                 var s_inclusions = this.only_selectors,
                     p_inclusions = this.only_properties,
@@ -303,40 +312,6 @@
 
 
         // ---
-        // Some magic for checking if a selector is understood by the browser - Thanks go to Daniel Wachsstock <d.wachss@prodigy.net>
-        // --
-        isUnderstoodSelector: function (str) {
-            var ret;
-            str += '{}'; // make a rule out of it
-            // Things like this make us crazy:
-            // Safari only creates the stylesheet if there is some text in the style element,
-            // while Opera crashes if the original statement has any text [as $('<style> </style>') ].
-            // IE crashes if we try to append a text node to a style element.
-            // The following satisfies all of them
-            var style = $('<style type="text/css"/>').appendTo('head')[0];
-            try {
-                style.appendChild(document.createTextNode(''));
-            } catch (e) { /* nothing */
-            }
-            if (style.styleSheet) {
-                // IE freezes up if addRule gets a selector it doesn't understand, but parses cssText fine and turns it to UNKNOWN
-                style.styleSheet.cssText = str;
-                ret = !/UNKNOWN/i.test(style.styleSheet.cssText);
-            } else if (style.sheet) {
-                // standards
-                try {
-                    style.sheet.insertRule(str, 0);
-                    ret = style.sheet.cssRules.length > 0; // the browser accepted it; now see if it stuck (Opera gets here)
-                } catch (e) {
-                    ret = false; // browser couldn't handle it
-                }
-            }
-            $(style).remove();
-            return ret;
-        },
-
-
-        // ---
         // A test to see if a particular media type should be applied
         // ---
         mediumApplies: function (str) {
@@ -370,6 +345,7 @@
             if (!content) return '';
             var c = content.replace(/[\n\r]/gi, ''); // remove newlines
             c = c.replace(/\/\*.+?\*\//gi, ''); // remove comments
+            c = c.replace(/\} *\r*\t*\}/, '}'); // clean old media queries declarations
             return c;
         },
 
