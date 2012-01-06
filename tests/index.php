@@ -122,7 +122,12 @@ $tests = array(
 	<link rel="stylesheet" href="tests.css">
 </head>
 <body>
+<header>
+	<h1>jKerny test cases</h1>
+</header>
+<section>
 <?php run_tests($tests); ?>
+</section>
 <footer>
 	jKerny is a funny creation by <a href="http://clearideaz.com" title="Clearideaz, webdesigner et développeur frontend sur Lille, France">Olivier Gorzalka</a>
 </footer>

@@ -1,6 +1,19 @@
 body {
-	font-family: Futura, "Century Gothic", AppleGothic, sans-serif ;
+	font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
 	background: #90A5B6 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAF0lEQVQYlWNgYGCQIhJDCGLAqELKFQIAQ4IB74sCh3YAAAAASUVORK5CYII=);
+}
+
+h1 {
+	color: #fff;
+	text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+	font-size: 5em;
+	text-align: center;
+	margin-bottom: 0.5em;
+	margin-top: 0;
+}
+
+h1:first-word {
+	color: #ebb4b4;
 }
 
 ul {
@@ -42,4 +55,13 @@ pre {
 	-o-tab-size: 2;
 	max-width: 430px;
 	min-width: 430px;
+}
+
+a {
+	color: #ebebeb;
+}
+
+footer {
+	color: #fff;
+	text-align: center;
 }
