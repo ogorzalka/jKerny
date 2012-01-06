@@ -3,11 +3,18 @@ html {
 }
 
 @media screen and (max-width: 640px) {
+	h1:first-word {
+		color:blue;
+	}
+}
+
+@media screen and (max-width: 940px) {
   .bloc {
     display:block;
     clear:both;
   }
 }
+
 
 body {
 	font-size:1em;
