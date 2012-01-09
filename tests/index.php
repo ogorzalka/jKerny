@@ -120,6 +120,7 @@ $tests = array(
 	<meta name="author" content="Olivier Gorzalka">
 	<meta name="viewport" content="user-scalable=yes">
 	<link rel="stylesheet" href="tests.css">
+	<link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <header>
