@@ -67,7 +67,35 @@ $tests = array(
 			'margin-right' => '3px',
 		),
 	),
-	
+	'p:letter:before' => array(
+		'test_expression' => 'AAAAAA',
+		'css_styles' => array(
+			'content' => '"H"',
+			'color' => 'red',
+		),
+	),
+	'p:letter:after' => array(
+		'test_expression' => 'HHHHHH',
+		'css_styles' => array(
+			'content' => '"A"',
+			'color' => 'red',
+		),
+	),
+	'p:first-letter:before' => array(
+		'test_expression' => 'Kerny',
+		'css_styles' => array(
+			'content' => '"j"',
+			'color' => 'red',
+		),
+	),
+	'p:last-letter:before' => array(
+		'test_expression' => 'jKery',
+		'css_styles' => array(
+			'content' => '"n"',
+			'color' => 'red',
+		),
+	),
+
 	// :word selector
 	'p:first-word' => array(
 		'test_expression' => 'jKerny is awesome',
@@ -108,6 +136,27 @@ $tests = array(
 			'margin-right' => '3px',
 		),
 	),
+	'p:first-word:before' => array(
+		'test_expression' => 'is awesome',
+		'css_styles' => array(
+			'content' => '"jKerny "',
+			'color' => 'red',
+		),
+	),
+	'p:word:after' => array(
+		'test_expression' => 'AH AH',
+		'css_styles' => array(
+			'content' => '" AH"',
+			'color' => 'red',
+		),
+	),
+	'p:word:before' => array(
+		'test_expression' => '&nbsp;FOR !',
+		'css_styles' => array(
+			'content' => '"EYE"',
+			'color' => 'red',
+		),
+	),
 );
 ?>
 <!DOCTYPE html>
@@ -125,6 +174,7 @@ $tests = array(
 <body>
 <header>
 	<h1>jKerny test cases</h1>
+	<a href="../">&lt; Back to the jKerny homepage</a>
 </header>
 <section>
 <?php run_tests($tests); ?>

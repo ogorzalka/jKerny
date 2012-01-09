@@ -24,6 +24,12 @@ h1:first-word {
 	color: #ebb4b4;
 }
 
+header a {
+	display: block;
+	margin-bottom: -2em;
+	padding-left: 1em;
+}
+
 ul {
 	clear: both;
 	width: 100%;
