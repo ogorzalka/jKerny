@@ -8,7 +8,7 @@ $tests = array(
 		'test_expression' => 'jKerny is awesome',
 		'css_styles' => array(
 			'color' => 'red',
-			'-jkerny-letter-spacing' => '2px -2px -1px -1px 2px',
+			'-jkerny-letter-spacing' => '2px -2px 0px 2px -2px',
 		),
 	),
 	'p:letter:first-child' => array(
@@ -17,7 +17,7 @@ $tests = array(
 			'color' => 'red',
 		),
 	),
-	'p:word :first-letter' => array(
+	'p:word:last-child :first-letter' => array(
 		'test_expression' => 'jKerny is awesome',
 		'css_styles' => array(
 			'color' => 'red',
@@ -30,13 +30,13 @@ $tests = array(
 		),
 	),
 	'p:last-letter' => array(
-		'test_expression' => 'jKerny is awesome',
+		'test_expression' => 'HTML5',
 		'css_styles' => array(
 			'color' => 'red',
 		),
 	),
 	'p:letter:last-child' => array(
-		'test_expression' => 'jKerny is awesome',
+		'test_expression' => 'HTML5 IS AWESOME',
 		'css_styles' => array(
 			'color' => 'red',
 		),
@@ -73,7 +73,7 @@ $tests = array(
 		'test_expression' => 'jKerny is awesome',
 		'css_styles' => array(
 			'color' => 'red',
-			'-jkerny-word-spacing' => '2px -2px -1px -1px 2px',
+			'-jkerny-word-spacing' => '5px 6px',
 		),
 	),
 	'p:word:first-child' => array(
@@ -119,7 +119,7 @@ $tests = array(
 	<meta name="description" content="jKerny.js, kerning get easy">
 	<meta name="author" content="Olivier Gorzalka">
 	<meta name="viewport" content="user-scalable=yes">
-	<link rel="stylesheet" href="tests.css">
+	<link rel="stylesheet" href="tests.css?v=<?php echo time(); ?>">
 	<link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
 </head>
 <body>

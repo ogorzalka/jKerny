@@ -65,6 +65,11 @@ pre {
 	min-width: 430px;
 }
 
+p {
+	font-family: 'Patua One', cursive;
+	font-size: 2em;
+}
+
 a {
 	color: #ebebeb;
 }
