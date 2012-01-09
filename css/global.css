@@ -2,14 +2,6 @@ html {
 	background:#b91f1f;
 }
 
-@media screen and (max-width: 940px) {
-  .bloc {
-    display:block;
-    clear:both;
-  }
-}
-
-
 body {
 	font-size:1em;
 	text-align:center;
