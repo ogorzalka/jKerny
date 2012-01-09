@@ -4,7 +4,7 @@ include('tests.inc.php');
 $tests = array(
 
 	// :letter selector
-	'p' => array(
+	'p:first-letter' => array(
 		'test_expression' => 'jKerny is awesome',
 		'css_styles' => array(
 			'color' => 'red',
