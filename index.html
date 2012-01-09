@@ -8,6 +8,7 @@
 	<meta name="author" content="Olivier Gorzalka">
 	<meta name="viewport" content="user-scalable=yes">
 	<link rel="stylesheet" href="css/global.css">
+	<link href='http://fonts.googleapis.com/css?family=Caudex' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <header>
@@ -115,6 +116,36 @@ p:letter:nth-child(even) {
 	<div class="pre example7">
 		<p>Kerning</p>
 	</div>
+	
+	
+	And now the GMAIL logo :
+	
+	<pre>
+p {
+	font-family: Arial, Helvetic, sans-serif;
+	font-size: 4.5em;
+	text-shadow: -1px -1px #666, 1px 1px #FFF;
+	margin: 0;
+}
+
+p:letter:nth-child(2) {
+	font-family: "TravelconsRegular", sans-serif;
+	color: #dc4431;
+}
+
+p:first-letter {
+	font-family: 'Caudex', Georgia, Times, “Times New Roman”, serif;
+	font-size: 1.2em;
+}
+
+p:letter:nth-child(3) { color: #f3a80a; }
+p:letter:nth-child(3n+1) { color: #3b60c8; }
+p:last-letter { color: #08941e }
+	</pre>
+	<div class="pre example8">
+		<p>Gmail</p>
+	</div>
+	
 
 	<h2 id="specific-classes">Ugh, it's invalid man! Give&nbsp;me&nbsp;the&nbsp;power&nbsp;of&nbsp;the&nbsp;validator!</h2>
 	
