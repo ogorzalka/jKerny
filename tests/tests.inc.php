@@ -24,7 +24,7 @@ function run_tests($test_cases=array()) {
 ?>
 <h2>Invalid pseudo-selectors</h2>
 <ul><?php
-	$i = 0;
+	$i = 1;
 	$styles = array();
 	echo "\n";
 	?>
@@ -41,8 +41,6 @@ function run_tests($test_cases=array()) {
 </ul>
 <h2>Valid selectors</h2>
 <ul><?php
-	$i = 0;
-	$styles = array();
 	echo "\n";
 	?>
 	<?php foreach($test_cases as $selector=>$datas): ?>
@@ -57,7 +55,6 @@ function run_tests($test_cases=array()) {
 	<?php $i++; ?>
 	<?php endforeach; ?><?php echo "\n"; ?>
 </ul>
-
 <style><?php echo convert_array_css($styles); ?>
 </style>
 <?php

@@ -48,6 +48,7 @@ ul li {
 	border: 8px solid rgba(0,0,0,0.1);
 	padding: 5px 10px;
 	margin: 10px;
+	background-color: #D9D9D9;
 	background: none no-repeat scroll 0 0 padding-box #D9D9D9;
 	-o-box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
 	-moz-box-shadow: 0px 0px 10px rgba(255,255,255,0.5);

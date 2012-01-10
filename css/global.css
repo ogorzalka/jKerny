@@ -10,6 +10,13 @@
 
 }
 
+@media screen and (max-width: 640px) {
+  .bloc:letter {
+    display:block;
+    clear:both;
+  }
+}
+
 html {
 	background:#b91f1f;
 }
@@ -26,19 +33,25 @@ body {
 }
 
 h1 {
+	font-size: 3em;
 	border-bottom:10px solid #ccc;
 	padding-bottom:0.5em;
 }
 
-h1:first-word {
-	font-size:3em;
-	color:#b91f1f;
-	display:block;
-	margin-bottom:-20px;
+h1:first-word  {
+	display: block;
+	-jkerny-letter-spacing:2px 2px 2px 2px 2px
 }
 
-h1 {
-	-jkerny-word-spacing: 32px;
+h1:first-word :letter {
+	background-color:#b91f1f;
+	color: #fff;
+	margin-bottom:-20px;
+	border-radius: 1em;
+	width: 1.4em;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.5), -1px -1px 0 rgba(255,255,255,0.3);
 }
 
 p {
@@ -48,10 +61,16 @@ p {
 }
 
 h1:first-letter {
-	-moz-transform:rotate(-10deg) translate(0, 10px);
-	-o-transform:rotate(-10deg) translate(0, 10px);
-	-webkit-transform:rotate(-10deg) translate(0, 10px);
-	transform:rotate(-10deg) translate(0, 10px);
+	-moz-transform:rotate(-10deg);
+	-o-transform:rotate(-10deg);
+	-webkit-transform:rotate(-10deg);
+	transform:rotate(-10deg);
+	text-transform: lowercase;
+	background-color: #000;
+	font-family: Verdana, Arial, sans-serif;
+	position:relative;
+	top: 0.1em;
+	font-size:0.8em;
 }
 
 a {
