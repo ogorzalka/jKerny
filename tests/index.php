@@ -185,6 +185,6 @@ $tests = array(
  <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
 <script>window.jQuery || document.write('<script src="../vendor/jquery-1.7.min.js"><\/script>')</script>
-<script src="../lib/jkerny.js"></script>
+<script src="../lib/jkerny.min.js"></script>
 </body>
 </html>
