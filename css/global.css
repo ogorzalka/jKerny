@@ -11,9 +11,8 @@
 }
 
 @media screen and (max-width: 640px) {
-  .bloc:letter {
-    display:block;
-    clear:both;
+  h1:letter {
+  	color: red;
   }
 }
 
