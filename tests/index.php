@@ -41,16 +41,20 @@ $tests = array(
 			'color' => 'red',
 		),
 	),
-	'p:word :last-letter' => array(
-		'test_expression' => 'jKerny is awesome',
+	'p:last-word :last-letter' => array(
+		'test_expression' => 'YEAH IT\'S CSS3',
 		'css_styles' => array(
 			'color' => 'red',
+			'font-size' => '1.2em',
 		),
 	),
-	'p:word:last-letter' => array(
-		'test_expression' => 'jKerny is awesome',
+	'p:first-word:last-letter' => array(
+		'test_expression' => 'HTML5 is awesome',
 		'css_styles' => array(
-			'color' => 'red',
+		    'font-size' => '1.2em',
+            'text-shadow' => '0 0 2px red',
+            'color' => 'red !hidden',
+            'color' => 'transparent',
 		),
 	),
 	'p:letter:last-child' => array(
@@ -60,13 +64,20 @@ $tests = array(
 		),
 	),
 	'p:letter' => array(
-		'test_expression' => 'jKerny is awesome',
+		'test_expression' => 'ROCK THE WORLD',
 		'css_styles' => array(
-			'background-color' => '#90A5B6',
-			'color' => '#fff',
+			'background-color' => 'black',
+			'color' => 'red',
 			'margin-right' => '3px',
+			'padding' => '0 5px'
 		),
 	),
+    'p:letter:nth-child(2n)' => array(
+    	'test_expression' => 'COOOOL',
+    	'css_styles' => array(
+    		'font-size' => '0.8em',
+    	),
+    ),
 	'p:letter:before' => array(
 		'test_expression' => 'AAAAAA',
 		'css_styles' => array(
@@ -111,31 +122,39 @@ $tests = array(
 		),
 	),
 	'p:last-word' => array(
-		'test_expression' => 'jKerny is awesome',
+		'test_expression' => 'It\'s CRAZY!!!',
 		'css_styles' => array(
-			'color' => 'red',
+		    'font-size' => '1.5em',
+		    'margin-left' => '5px',
+			'letter-spacing' => '5px',
+			'-moz-transform'=> 'rotate(-5deg) !hidden',
+			'-o-transform'=> 'rotate(-5deg) !hidden',
+			'-webkit-transform'=> 'rotate(-5deg) !hidden',
+			'transform'=> 'rotate(-5deg)',
 		),
 	),
 	'p:word:last-child' => array(
-		'test_expression' => 'jKerny is awesome',
+		'test_expression' => 'Use Wordpress',
 		'css_styles' => array(
-			'color' => 'red',
-		),
-	),
-	'p:word:last-child' => array(
-		'test_expression' => 'jKerny is awesome',
-		'css_styles' => array(
-			'color' => 'red',
+			'font-style' => 'italic',
+			'color' => 'rgba(0,0,0,0.5)'
 		),
 	),
 	'p:word' => array(
 		'test_expression' => 'jKerny is awesome',
 		'css_styles' => array(
-			'background-color' => '#90A5B6',
-			'color' => '#fff',
-			'margin-right' => '3px',
+            'background-color' => 'black',
+            'color' => 'red',
+            'margin-right' => '3px',
+            'padding' => '0 5px'
 		),
 	),
+    'p:word:nth-child(odd)' => array(
+    	'test_expression' => 'ROCK N\' ROLL',
+    	'css_styles' => array(
+    		'font-size' => '1.2em',
+    	),
+    ),
 	'p:first-word:before' => array(
 		'test_expression' => 'is awesome',
 		'css_styles' => array(
@@ -151,9 +170,9 @@ $tests = array(
 		),
 	),
 	'p:word:before' => array(
-		'test_expression' => '&nbsp;FOR !',
+		'test_expression' => 'FOR !',
 		'css_styles' => array(
-			'content' => '"EYE"',
+			'content' => '"EYE "',
 			'color' => 'red',
 		),
 	),
@@ -185,6 +204,6 @@ $tests = array(
  <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
 <script>window.jQuery || document.write('<script src="../vendor/jquery-1.7.min.js"><\/script>')</script>
-<script src="../lib/jkerny.min.js"></script>
+<script src="../lib/jkerny.js"></script>
 </body>
 </html>

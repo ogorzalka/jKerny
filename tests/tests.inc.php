@@ -6,14 +6,16 @@ function convert_array_css($styles = array(), $mode='all') {
 		foreach($styles as $selector=>$attributes) {
 			$output .= "\n\t$selector {";
 			foreach($attributes as $property=>$value) {
-				$output .= "\n\t\t$property: $value;\n";
+				$output .= "\n\t\t$property: ".str_replace('!hidden', '', $value).";\n";
 			}
 			$output .= "\t}\n";
 		}
 	} else {
 		$output =  " {\n";
 		foreach($styles as $property=>$value) {
-			$output .= "\t$property: $value;\n";
+		    if ($mode != 'all' && !strpos($value, '!hidden')) {
+			    $output .= "\t$property: $value;\n";
+			}
 		}
 		$output .= "}\n";
 	}
