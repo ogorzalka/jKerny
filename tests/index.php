@@ -170,10 +170,11 @@ $tests = array(
 		),
 	),
 	'p:word:before' => array(
-		'test_expression' => 'FOR !',
+		'test_expression' => '4 !',
 		'css_styles' => array(
 			'content' => '"EYE "',
 			'color' => 'red',
+			'font-size' => '1.2em',
 		),
 	),
 );
