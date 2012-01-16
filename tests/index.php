@@ -9,6 +9,7 @@ $tests = array(
 		'css_styles' => array(
 			'color' => 'red',
 			'-jkerny-letter-spacing' => '2px -2px 0px 2px -2px',
+			'-jkerny-word-spacing' => '5px 5px 6px 7px -8px',
 		),
 	),
 	'p:letter:first-child' => array(
