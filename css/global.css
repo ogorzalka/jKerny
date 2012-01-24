@@ -10,6 +10,7 @@
 
 }
 
+ 
 @media screen and (max-width: 640px) {
   h1:letter {
   	color: red;
@@ -19,14 +20,6 @@
 html {
 	background:#b91f1f;
 }
-
-
-@media screen and (max-width: 640px) {
-  h2:letter {
-  	color: red;
-  }
-}
-
 
 body {
 	font-size:1em;
